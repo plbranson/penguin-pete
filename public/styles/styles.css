@@ -1,0 +1,291 @@
+/*
+ *  Copyright 2023 Patrick L. Branson
+ *
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
+ */
+
+:root {
+  --penguin-skin: gray;
+  --penguin-face: white;
+  --penguin-picorna: orange;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100vh;
+
+  /** Hides the scroll bars */
+  overflow: hidden;
+
+  background: linear-gradient(45deg, rgb(118, 201, 255), rgb(247, 255, 222));
+}
+
+.ground {
+  width: 100vw;
+  /* height: 400px; */
+  height: calc(100vh - 300px);
+  position: absolute;
+  margin-top: -58px;
+  z-index: 3;
+
+  background: linear-gradient(90deg, rgb(88, 175, 236), rgb(182, 255, 255));
+}
+
+.penguin {
+  width: 300px;
+  height: 300px;
+  margin: auto;
+  margin-top: 75px !important;
+  z-index: 4;
+  position: relative;
+  transition-delay: 0ms;
+  transition-duration: 1s;
+  transition-timing-function: ease-in-out;
+}
+
+.penguin-active {
+  cursor: not-allowed;
+  transform: scale(1.5);
+}
+
+.penguin-head {
+  top: 10%;
+  left: 25%;
+  width: 50%;
+  height: 45%;
+  z-index: 1;
+  border-radius: 70% 70% 65% 65%;
+  background: linear-gradient(45deg, var(--penguin-skin), rgb(239, 240, 228));
+}
+
+.penguin * {
+  position: absolute;
+}
+
+.penguin-face {
+  top: 15%;
+  width: 60%;
+  height: 70%;
+  background-color: var(--penguin-face);
+  border-radius: 70% 70% 60% 60%;
+}
+
+.penguin-face.left-side {
+  left: 5%;
+}
+
+.penguin-face.right-side {
+  right: 5%;
+}
+
+.penguin-chin {
+  left: 5%;
+  top: 25%;
+  width: 90%;
+  height: 70%;
+  background-color: var(--penguin-face);
+  border-radius: 70% 70% 100% 100%;
+}
+
+.penguin-eye {
+  top: 45%;
+  width: 15%;
+  height: 17%;
+  border-radius: 50%;
+  background-color: black;
+}
+
+.penguin-eye.left-side {
+  left: 25%;
+}
+
+.penguin-eye.right-side {
+  right: 25%;
+}
+
+.penguin-eye-lid {
+  top: 25%;
+  left: -23%;
+  width: 150%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: var(--penguin-face);
+}
+
+.penguin-blush {
+  top: 65%;
+  width: 15%;
+  height: 10%;
+  border-radius: 50%;
+  background-color: pink;
+}
+
+.penguin-blush.left-side {
+  left: 15%;
+}
+
+.penguin-blush.right-side {
+  right: 15%;
+}
+
+.penguin-beak {
+  height: 10%;
+  border-radius: 50%;
+  background-color: var(--penguin-picorna);
+}
+
+.penguin-beak.top {
+  top: 60%;
+  left: 40%;
+  width: 20%;
+}
+
+.penguin-beak.bottom {
+  top: 65%;
+  left: 42%;
+  width: 16%;
+}
+
+.penguin-shirt {
+  top: 165px;
+  z-index: 1;
+  left: 127.5px;
+  font-size: 25px;
+  color: #6a6969;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.penguin-shirt div {
+  top: 22.5px;
+  left: 12px;
+  font-weight: normal;
+}
+
+.penguin-body {
+  top: 40%;
+  left: 23.5%;
+  width: 53%;
+  height: 45%;
+  border-radius: 80% 80% 100% 100%;
+  background: linear-gradient(45deg, rgb(134, 133, 133) 0%, rgb(234, 231, 231) 25%, var(--penguin-face) 67%);
+}
+
+.penguin-body::before {
+  top: 10%;
+  left: 25%;
+  width: 50%;
+  height: 45%;
+  content: '';
+  opacity: 70%;
+  position: absolute;
+  background-color: var(--penguin-skin);
+  border-radius: 0% 0% 100% 100%;
+}
+
+.penguin-arm {
+  width: 30%;
+  height: 60%;
+  z-index: -1;
+  border-radius: 30% 30% 30% 120%;
+  background: linear-gradient(90deg, var(--penguin-skin), rgb(209, 210, 199));
+}
+
+.penguin-arm.left-side {
+  top: 35%;
+  left: 5%;
+  transform-origin: top left;
+  transform: rotate(130deg) scaleX(-1);
+
+  /** Animation actions */
+  animation-name: wave;
+  animation-duration: 3s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.penguin-arm.right-side {
+  top: 0%;
+  right: -5%;
+  transform: rotate(-45deg);
+}
+
+.penguin-foot {
+  top: 85%;
+  width: 15%;
+  z-index: -1;
+  height: 30%;
+  border-radius: 50%;
+  background-color: var(--penguin-picorna);
+}
+
+.penguin-foot.left-side {
+  left: 25%;
+  transform: rotate(80deg);
+}
+
+.penguin-foot.right-side {
+  right: 25%;
+  transform: rotate(-80deg);
+}
+
+.left-mountain {
+  width: 300px;
+  height: 300px;
+  position: absolute;
+  z-index: 2;
+  margin-top: 100px;
+  transform: skew(0deg, 44deg);
+  background: linear-gradient(rgb(203, 241, 228), rgb(80, 183, 255));
+}
+
+.back-mountain {
+  top: 255px;
+  left: 110px;
+  width: 300px;
+  height: 300px;
+  z-index: 1;
+  position: absolute;
+  transform: rotate(45deg);
+  background: linear-gradient(rgb(203, 241, 228), rgb(47, 170, 255));
+}
+
+.sun {
+  top: -75px;
+  right: -75px;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  position: absolute;
+  background-color: yellow;
+}
+
+@keyframes wave {
+  10% {
+    transform: rotate(110deg) scaleX(-1);
+  }
+
+  20% {
+    transform: rotate(130deg) scaleX(-1);
+  }
+
+  30% {
+    transform: rotate(110deg) scaleX(-1);
+  }
+
+  40% {
+    transform: rotate(130deg) scaleX(-1);
+  }
+}
